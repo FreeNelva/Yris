@@ -3,42 +3,42 @@
 
 <hr>
 
-**1. <ul>USER INFORMATION</ul>:**
+**1. <u>USER INFORMATION</u>:**
 - [ ] Username
 - [ ] Fullname
 - [ ] User ID
 - [ ] Group ID
 
-**2. <ul>SYSTEM INFORMATION</ul>:**
+**2. <u>SYSTEM INFORMATION</u>:**
 - [ ] Kernel
 - [ ] Architecture
 - [ ] Version
 - [ ] Release
 - [ ] Distro
 
-**3. <ul>NETWORK</ul>:**
+**3. <u>NETWORK</u>:**
 - [ ] Hostname
 - [ ] Interface
 - [ ] Network IP
 - [ ] Public IP
 
-**4. <ul>MEMORY</ul>:**
+**4. <u>MEMORY</u>:**
 - [ ] Size
 - [ ] Type (DDR)
 - [ ] Swap
 
-**5. <ul>STORAGE<ul>:**
+**5. <u>STORAGE<u>:**
 - [ ] Home Directory
 - [ ] Total Capacity
 - [ ] Used Capacity
 - [ ] Free Capacity
 
-**6. <ul>CPU<ul>:**
+**6. <u>CPU<u>:**
 - [ ] Vendor
 - [ ] Model
 - [ ] GPU
 
-**7. <ul>Hardware</ul>:**
+**7. <u>Hardware</u>:**
 - [ ] Brand
 - [ ] Model
 - [ ] Type
