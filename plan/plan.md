@@ -18,15 +18,18 @@
 - [x] Shell
 
 ### 3. <u>NETWORK</u>:
-- [ ] Hostname
-- [ ] Interface
-- [ ] Network IP
-- [ ] Public IP
+- [x] Hostname
+- [x] Domain Name
+- [x] Interface
+- [x] Network IP
+- [x] Public IP
 
-### 4. <u>MEMORY</u>:**
+### 4. <u>MEMORY</u>:
 - [ ] Size
 - [ ] Type (DDR)
-- [ ] Swap
+- [ ] Speed
+- [ ] Form Factor
+- [ ] CAS Latency
 
 ### 5. <u>STORAGE<u>:
 - [ ] Home Directory
