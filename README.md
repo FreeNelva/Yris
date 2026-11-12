@@ -10,12 +10,17 @@
 Yris is an open source and compiled specification commandline tool for unix systems. It is written in <i>C++</i> to ensure memory efficiency, fast performance & access to low-level general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
 </p>
 
-<label>clone repo</label>
+**Prerequisite**
+<h2>Requirements:<2>
+- [x] g++ or clang++ ( C++ Compiler )
+- [x] C++ 23
+
+<label>**1. clone repo**</label>
 ```
 git clone https://github.com/FreeNelva/Yris.git
 ```
 
-<label>installation<label>
+<label>**2. installation**<label>
 ```
 mkdir build
 make install

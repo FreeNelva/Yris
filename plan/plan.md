@@ -4,17 +4,18 @@
 <hr>
 
 **1. <u>USER INFORMATION</u>:**
-- [ ] Username
-- [ ] Fullname
-- [ ] User ID
-- [ ] Group ID
+- [x] Username 
+- [x] Fullname
+- [x] User ID
+- [x] Group ID
 
 **2. <u>SYSTEM INFORMATION</u>:**
-- [ ] Kernel
-- [ ] Architecture
-- [ ] Version
-- [ ] Release
-- [ ] Distro
+- [x] Kernel
+- [x] Architecture
+- [x] Version
+- [x] Release
+- [x] Distro
+- [x] Shell
 
 **3. <u>NETWORK</u>:**
 - [ ] Hostname
