@@ -12,9 +12,9 @@ Yris is an open source and compiled specification commandline tool for unix syst
 
 ###Prerequisite
 <h2>Requirements:</h2>
-- [x] g++ or clang++ ( C++ Compiler )
-- [x] C++ 23
-- [x] Make
+- [x] g++ or clang++ ( C++ Compiler ) <br />
+- [x] C++ 23 <br />
+- [x] Make <br />
 
 ###<label>1. clone repo</label>
 ```
