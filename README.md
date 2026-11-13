@@ -11,7 +11,7 @@ Yris is an open source and compiled specification commandline tool for unix syst
 </p>
 
 ###Prerequisite
-<h2>Requirements:<2>
+<h2>Requirements:</h2>
 - [x] g++ or clang++ ( C++ Compiler )
 - [x] C++ 23
 - [x] Make
@@ -21,7 +21,7 @@ Yris is an open source and compiled specification commandline tool for unix syst
 git clone https://github.com/FreeNelva/Yris.git
 ```
 
-###<label>2. installation<label>
+###<label>2. installation</label>
 ```
 mkdir build
 make install
