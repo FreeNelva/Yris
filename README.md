@@ -1,28 +1,26 @@
-<h1 style="justify-content: flex; text-align: center;">Yris</h1>
+# Yris
+
+<div align="center">
+    <img src="resources/img/logo.jpg" width="70%" alt="Yris Logo"/>
+</div>
 
 <hr />
 
-<div style="justify-content: flex; text-align: center;">
-    <img src="resources/img/logo.jpg" style="width: 70%;"/>
-</div>
+Yris is an open-source, compiled system information tool for Unix-like systems. Written in **C++**, it delivers memory efficiency, fast performance, and direct access to low-level system specifications. Yris can display both hardware and software information with a single command, or target specific details using command-line arguments.
 
-<p>
-Yris is an open source and compiled specification commandline tool for unix systems. It is written in <i>C++</i> to ensure memory efficiency, fast performance & access to low-level general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
-</p>
+## Prerequisites
 
-###Prerequisite
-<h2>Requirements:</h2>
-- [x] g++ or clang++ ( C++ Compiler ) <br />
-- [x] C++ 23 <br />
-- [x] Make <br />
+Before building Yris, ensure you have the following installed:
 
-###<label>1. clone repo</label>
-```
+- [ ] **g++** or **clang++** (C++ compiler)
+- [ ] **C++23** support
+- [ ] **Make**
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/FreeNelva/Yris.git
-```
-
-###<label>2. installation</label>
-```
-mkdir build
-make install
+cd Yris
 ```
