@@ -25,8 +25,8 @@
 - [x] Public IP
 
 ### 4. <u>MEMORY</u>:
-- [ ] Size
-- [ ] Type (DDR)
+- [x] Size
+- [x] Type (DDR)
 - [ ] Speed
 - [ ] Form Factor
 - [ ] CAS Latency

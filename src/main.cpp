@@ -20,7 +20,6 @@
 #include <iostream>
 
 int main() {
-    set_public_ip();
-    std::cout << network_ip << std::endl;
+    std::cout << mem_type << std::endl;
     return 0;
 }

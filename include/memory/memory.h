@@ -21,5 +21,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef MEMORY_H
 #define MEMORY_H
 
+#include <cstdio>
+#include <string>
+#include <sys/sysinfo.h>
+
+#ifndef mem_size
+double m_size(){
+    struct sysinfo info;
+    if(sysinfo(&info) != 0){
+        return -1;
+    }
+    return static_cast<double>(info.totalram) * info.mem_unit / ( 1024.0 * 1024.0 * 1024.0);
+}
+#define mem_size m_size()
+#endif // mem_size
+
+#ifndef mem_type
+std::string get_type(){
+    std::string t;
+    if(FILE* p = popen("dmidecode -t 17 | awk '/Type:/&&!/Error/{print $2;exit}'", "r")){
+        char b[32] = {0};
+        if(fgets(b, 32, p)) t = b;
+        pclose(p);
+    }
+    if(t.length() < 4) return "Unknown";
+    switch (t[3]){
+        case '3':
+            return "DDR3";
+        case '4':
+            return "DDR4";
+        case '5':
+            return "DDR5";
+        default:
+            return "Other";
+    }
+}
+#define mem_type get_type()
+#endif // mem_type
 
 #endif // MEMORY_H

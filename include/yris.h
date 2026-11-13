@@ -23,5 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #include <user/user.h>
     #include <basic/license.h>
     #include <system/system.h>
+    #include <memory/memory.h>
     #include <network/network.h>
 #endif // YRIS_H
