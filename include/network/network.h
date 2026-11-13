@@ -21,8 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include <cstdio>
+#include <net/if.h>
+#include <unistd.h>
 #include <ifaddrs.h>
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/utsname.h>
@@ -43,41 +45,64 @@ void set_network_info() {
 #endif
 
 #ifndef interface
-#ifndef local_ip
-void set_interface(){
-    struct ifaddrs* ifaddr = nullptr;
-    if (getifaddrs(&ifaddr) == -1) {
-        // Handle error
-        return;
-    }
-
-    for (struct ifaddrs* ifa = ifaddr; ifa != nullptr; ifa = ifa->ifa_next) {
-        if (ifa->ifa_addr == nullptr) {
-            continue;
+std::string set_interface(){
+    std::string out;
+    struct ifaddrs *list, *ifa;
+    if(getifaddrs(&list) == -1) return out;
+    for(ifa = list; ifa; ifa = ifa->ifa_next){
+        if(!ifa->ifa_addr || ifa->ifa_addr->sa_family != AF_INET) continue;
+        if(!(ifa->ifa_flags & IFF_UP) || (ifa->ifa_flags & IFF_LOOPBACK)) continue;
+        std::string n = ifa->ifa_name;
+        if(access(("/sys/class/net/" + n + "/wireless").c_str(), F_OK) == 0){
+            freeifaddrs(list);
+            return n;
         }
+        if(out.empty() && (n.rfind("eth",0) == 0 || n.rfind("en",0) ==0)) out = n;
 
-        int family = ifa->ifa_addr->sa_family;
-        if (family == AF_INET || family == AF_INET6) {
-            char ip[INET6_ADDRSTRLEN];
-            void* addr_ptr = (family == AF_INET) ? (void*)&((struct sockaddr_in*)ifa->ifa_addr)->sin_addr : (void*)&((struct sockaddr_in6*)ifa->ifa_addr)->sin6_addr;
-            inet_ntop(family, addr_ptr, ip, sizeof(ip));
-            #define interface ifa->ifa_name
-            #define local_ip ip
-        }
     }
-    freeifaddrs(ifaddr);
+    freeifaddrs(list);
+    return out;
 }
-#endif // local_ip
+#define interface set_interface()
 #endif // interface
 
+#ifndef network_ip
+std::string get_ip(){
+    struct ifaddrs *list, *ifa;
+    std::string ip = "", eth_ip = "";
+    if(getifaddrs(&list) == -1) return ip;
+
+    for(ifa = list; ifa; ifa = ifa->ifa_next){
+        if(!ifa->ifa_addr || ifa->ifa_addr->sa_family != AF_INET) continue;
+        if(!(ifa->ifa_flags && IFF_UP) || (ifa->ifa_flags & IFF_LOOPBACK)) continue;
+
+        std::string n = ifa->ifa_name;
+        char buf[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &((struct sockaddr_in*)ifa->ifa_addr)->sin_addr, buf, sizeof(buf));
+
+        if(access(("/sys/class/net/" + n + "/wireless").c_str(), F_OK) == 0){
+            ip = buf;
+            break;
+        }
+        if(eth_ip.empty() && (n.rfind("eth",0) == 0 || n.rfind("en",0) == 0)){
+            eth_ip = buf;
+        }
+    }
+    freeifaddrs(list);
+    return ip.empty() ? eth_ip : ip;
+}
+#define network_ip get_ip()
+#endif // network_ip
+
 #ifndef public_ip
-void set_public_ip(){
+std::string set_public_ip(){
     FILE* fp = popen("curl -s ifconfig.me", "r");
     char ip[64] = {0};
     fgets(ip, sizeof(ip), fp);
-    #define public_ip ip
     pclose(fp);
+    return std::string(ip);
 }
+#define public_ip set_public_ip()
 #endif // public_ip
 
 #endif // NETWORK_H

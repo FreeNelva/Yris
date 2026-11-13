@@ -20,5 +20,7 @@
 #include <iostream>
 
 int main() {
+    set_public_ip();
+    std::cout << network_ip << std::endl;
     return 0;
 }
